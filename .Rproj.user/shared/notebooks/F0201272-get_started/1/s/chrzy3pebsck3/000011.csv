@@ -1,0 +1,7 @@
+"0","# Calculate the average discrepancy score"
+"0",""
+"0","mean_dscore("
+"0","  maverick_event_report,"
+"0","  group_var = ""event_id"","
+"0","  variables = c(""date_start"", ""deaths_best"")"
+"0",")"
