@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-<img src="man/figures/logo.png" align="right" height="200"/></a>
+<img src="man/figures/logo.png" align="right" height="200" style="margin-left:10px; margin-bottom:10px;" />
 
 # eventreport
 
