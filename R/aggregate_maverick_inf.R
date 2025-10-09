@@ -10,7 +10,9 @@
 #' @importFrom dplyr rowwise mutate across starts_with ends_with c_across cur_column ungroup case_when
 #' @importFrom tidyr matches
 #' @examples
+#' \donttest{
 #' maverick_informative <- aggregate_maverick_inf()
+#' }
 
 aggregate_maverick_inf <- function(data) {
   aggregateData(

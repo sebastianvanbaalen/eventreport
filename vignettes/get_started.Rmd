@@ -28,7 +28,7 @@ Welcome to the `eventreport` package. `eventreport` includes a set of functions 
 
 This vignette explains what event report level data is and how to work with such data using the functions contained in this package.
 
-Before starting, we load the `tidyverse` package for writing tidy code, the `tinytable` package to draw easy-to-read tables, as well as a small subset of the `maverick_event_report` dataset to exemplify the package functions. For users that are interested in working with the MAVERICK dataset contained in this package, we refer to the MAVERICK [documentation](https://doi.org/10.7910/DVN/GRXTTZ).
+Before starting, we load the `tidyverse` package for writing tidy code, the `tinytable` package to draw easy-to-read tables, as well as a small subset of the `maverick_event_report` dataset to exemplify the package functions. For users that are interested in working with the MAVERICK dataset contained in this package, we refer to the MAVERICK documentation.
 
 ```{r, message = FALSE, warning = FALSE}
 #install.packages("tidyverse")

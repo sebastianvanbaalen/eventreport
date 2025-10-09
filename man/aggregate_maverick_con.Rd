@@ -16,5 +16,7 @@ Returns a dataframe of the most-conservative aggregation of the MAVERICK dataset
 This convenience function aggregates the MAVERICK event report data to the event level using the most-conservative aggregation model.
 }
 \examples{
+\donttest{
 maverick_conservative <- aggregate_maverick_con()
+}
 }

@@ -16,6 +16,7 @@ Returns a dataframe of the most-representative aggregation of the MAVERICK datas
 This convenience function aggregates the MAVERICK event report data to the event level using the most-representative aggregation model.
 }
 \examples{
-small_data <- utils::head(maverick_event_report, 50) # To make example run faster
-maverick_representative <- aggregate_maverick_rep(small_data)
+\donttest{
+maverick_representative <- aggregate_maverick_rep()
+}
 }

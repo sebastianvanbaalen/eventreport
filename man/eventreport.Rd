@@ -20,6 +20,14 @@ and summarizing event data.
 Sebastian van Baalen & Kristine Hoglund (2024) Trials and Triangulations:
 Aggregation Problems in Event Data on Political Violence. Uppsala: Uppsala University.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/sebastianvanbaalen/eventreport}
+  \item Report bugs at \url{https://github.com/sebastianvanbaalen/eventreport/issues}
+}
+
+}
 \author{
 Sebastian van Baalen & Kristine Hoglund (2024)
 }

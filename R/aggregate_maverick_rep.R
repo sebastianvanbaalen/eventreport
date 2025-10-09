@@ -8,8 +8,9 @@
 #' @export
 #'
 #' @examples
-#' small_data <- utils::head(maverick_event_report, 50) # To make example run faster
-#' maverick_representative <- aggregate_maverick_rep(small_data)
+#' \donttest{
+#' maverick_representative <- aggregate_maverick_rep()
+#' }
 
 aggregate_maverick_rep <- function(data) {
   aggregateData(

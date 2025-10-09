@@ -8,7 +8,9 @@
 #' @export
 #'
 #' @examples
+#' \donttest{
 #' maverick_conservative <- aggregate_maverick_con()
+#' }
 
 aggregate_maverick_con <- function(data) {
   aggregateData(

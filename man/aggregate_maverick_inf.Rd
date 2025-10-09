@@ -16,5 +16,7 @@ Returns a dataframe of the most-informative aggregation of the MAVERICK dataset.
 This convenience function aggregates the MAVERICK event report data to the event level using the most-informative aggregation model.
 }
 \examples{
+\donttest{
 maverick_informative <- aggregate_maverick_inf()
+}
 }
