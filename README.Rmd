@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# eventreport <img src="man/figures/logo.png" style="float:right; height:200px; margin-left:10px; margin-bottom:10px;" />
+# eventreport <a href="#"><img src="man/figures/logo.png" align="right" height="200" style="margin-left:15px; margin-bottom:5px;" /></a>
 
 <!-- badges: start -->
 
