@@ -16,7 +16,7 @@ Description: Diagnose, visualize, and aggregate event report
     level data to the event level. Users provide an event report level 
     dataset, specify their aggregation rules, and the package produces a
     dataset aggregated at the event level. Also includes the Modes and 
-    Agents of Election-Related Violence in Côte d'Ivoire and Kenya (MAVERICK) datset,
+    Agents of Election-Related Violence in Côte d'Ivoire and Kenya (MAVERICK) dataset,
     an event report level dataset that records all documented instances of 
     electoral violence from the first multiparty election to 2022 in 
     Côte d'Ivoire (1995-2022) and Kenya (1992-2022).
