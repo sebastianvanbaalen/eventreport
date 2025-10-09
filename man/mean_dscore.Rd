@@ -2,28 +2,39 @@
 % Please edit documentation in R/mean_dscore.R
 \name{mean_dscore}
 \alias{mean_dscore}
-\title{A function for calculating mean divergence scores}
+\title{Calculate the mean divergence scores across event reports}
 \usage{
 mean_dscore(data, group_var, variables, normalize = FALSE, plot = FALSE)
 }
 \arguments{
-\item{data}{A data frame containing the data to be analyzed.}
+\item{data}{A data frame containing event report level data.}
 
-\item{group_var}{A string indicating the grouping variable in the data frame.}
+\item{group_var}{A character string naming the column that uniquely identifies events (e.g., "event_id").}
 
-\item{variables}{A character vector of column names for which the divergence score will be calculated.}
+\item{variables}{A character vector of column names to compute divergence scores for.}
 
-\item{normalize}{Logical, indicating whether to normalize the scores by the total number of unique values across the dataset.}
+\item{normalize}{Logical, indicating whether to normalize the scores by the total number of unique values for each variable.}
 
-\item{plot}{Logical, indicating whether to return a ggplot object visualizing the scores instead of a data frame.}
+\item{plot}{Logical, indicating whether to return a ggplot object visualizing the scores.}
 }
 \value{
-A data frame or a ggplot object, depending on the value of the \code{plot} argument.
-If \code{plot} is FALSE, returns a data frame with variables and their corresponding scores.
-If \code{plot} is TRUE, returns a ggplot object displaying the scores.
+Either a tibble or a ggplot object, depending on the value of \code{plot}.
+If \code{plot = FALSE}, returns a tibble with two columns:
+\describe{
+  \item{variable}{The name of each variable.}
+  \item{dscore}{The mean divergence score or normalized score.}
+}
+If \code{plot = TRUE}, returns a lollipop-style plot showing divergence scores by variable.
 }
 \description{
-This function computes the mean divergence of the number of unique values minus one for each specified variable within each group. Optionally, it normalizes this divergence by the total number of unique values that the variable takes in the dataset. Users can also use the function to directly plot the output as a ggplot object.
+This function calculates the mean divergence score for one or more variables grouped by an event identifier.
+The divergence score captures how often values for a given variable differ across event reports describing the same event.
+}
+\details{
+For each variable and event, the function computes the number of unique values reported, subtracts one, and averages these
+values across all events. This reflects how much inconsistency exists across sources. Optionally, the scores can be
+normalized by the total number of unique values observed for each variable across the dataset. The result is a long-format
+dataframe showing which variables are most sensitive to aggregation. A plotting option is also available.
 }
 \examples{
 df <- data.frame(

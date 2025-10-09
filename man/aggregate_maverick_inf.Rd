@@ -10,7 +10,7 @@ aggregate_maverick_inf(data)
 \item{data}{The MAVERICK event report level dataset. Already pre-loaded.}
 }
 \value{
-Returns a dataframe of the most-informative aggregation of MAVERICK.
+Returns a dataframe of the most-informative aggregation of the MAVERICK dataset.
 }
 \description{
 This convenience function aggregates the MAVERICK event report data to the event level using the most-informative aggregation model.

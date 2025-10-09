@@ -4,6 +4,7 @@
 #' @examples
 #' calc_mode_binary(c(0, 1, 1, 0, 1))
 #' @export
+
 calc_mode_binary <- function(x) {
     if (!is.numeric(x) || any(!x %in% c(0, 1))) {
       warning("Input 'x' must be a numeric binary variable consisting only of 0 and 1.")

@@ -7,6 +7,7 @@
 #' @examples
 #' calc_mode_numeric(c(1, 2, 2, 3, 4, 4))
 #' @export
+
 calc_mode_numeric <- function(x) {
   if (!is.numeric(x)) {
     warning("Input 'x' must be a numeric variable.")

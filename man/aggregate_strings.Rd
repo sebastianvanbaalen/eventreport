@@ -2,7 +2,7 @@
 % Please edit documentation in R/aggregate_strings.R
 \name{aggregate_strings}
 \alias{aggregate_strings}
-\title{A function for combining strings from a character variable}
+\title{Combine strings from a character variable}
 \usage{
 aggregate_strings(str_var)
 }
@@ -13,7 +13,7 @@ aggregate_strings(str_var)
 Returns a single character string with unique strings concatenated by semicolons.
 }
 \description{
-A function for combining strings from a character variable
+This function combines strings from a character variable.
 }
 \examples{
 aggregate_strings(c("apple", "banana", "apple", "Unknown", "orange", " "))

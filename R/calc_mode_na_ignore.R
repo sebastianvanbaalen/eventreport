@@ -17,6 +17,7 @@
 #' calc_mode_na_ignore(data)  # Expect: "apple"
 #' calc_mode_na_ignore(data, tie_break)  # Expect: "banana"
 #' calc_mode_na_ignore(data, tie_break, second_tie_break)  # Expect: "banana"
+
 calc_mode_na_ignore <- function(x, tie_break = NULL, second_tie_break = NULL) {
   # Filter out NA and empty strings
   valid_indices <- which(x != "" & !is.na(x))

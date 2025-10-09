@@ -2,7 +2,7 @@
 % Please edit documentation in R/aggregateData.R
 \name{aggregateData}
 \alias{aggregateData}
-\title{Aggregate Data}
+\title{Aggregate event report data}
 \usage{
 aggregateData(
   data,
@@ -17,6 +17,7 @@ aggregateData(
   combine_strings = NULL,
   find_max = NULL,
   find_min = NULL,
+  summarize_vars = NULL,
   aggregation_name = NULL,
   tie_break = "default_tie_break",
   second_tie_break = "default_tie_break"
@@ -47,6 +48,8 @@ aggregateData(
 
 \item{find_min}{A vector of variable names for which to find the minimum value.}
 
+\item{summarize_vars}{A vector of variable names for which to sum all values.}
+
 \item{aggregation_name}{A string specifying the name of the aggregation.}
 
 \item{tie_break}{A string specifying the tie break column name. Default is "default_tie_break".}
@@ -57,5 +60,10 @@ aggregateData(
 A data frame with the aggregated results.
 }
 \description{
-This function aggregates data based on the specified grouping variable and various aggregation criteria.
+This function aggregates event report data based on a specified grouping variable and various aggregation criteria.
+}
+\examples{
+small_maverick_event_report \%>\%
+  aggregateData(group_var = "event_id", find_mode = "city") \%>\%
+  utils::head(10)
 }

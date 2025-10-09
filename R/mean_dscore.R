@@ -1,16 +1,26 @@
-#' A function for calculating mean divergence scores
+#' Calculate the mean divergence scores across event reports
 #'
-#' This function computes the mean divergence of the number of unique values minus one for each specified variable within each group. Optionally, it normalizes this divergence by the total number of unique values that the variable takes in the dataset. Users can also use the function to directly plot the output as a ggplot object.
+#' This function calculates the mean divergence score for one or more variables grouped by an event identifier.
+#' The divergence score captures how often values for a given variable differ across event reports describing the same event.
 #'
-#' @param data A data frame containing the data to be analyzed.
-#' @param group_var A string indicating the grouping variable in the data frame.
-#' @param variables A character vector of column names for which the divergence score will be calculated.
-#' @param normalize Logical, indicating whether to normalize the scores by the total number of unique values across the dataset.
-#' @param plot Logical, indicating whether to return a ggplot object visualizing the scores instead of a data frame.
+#' For each variable and event, the function computes the number of unique values reported, subtracts one, and averages these
+#' values across all events. This reflects how much inconsistency exists across sources. Optionally, the scores can be
+#' normalized by the total number of unique values observed for each variable across the dataset. The result is a long-format
+#' dataframe showing which variables are most sensitive to aggregation. A plotting option is also available.
 #'
-#' @return A data frame or a ggplot object, depending on the value of the \code{plot} argument.
-#' If \code{plot} is FALSE, returns a data frame with variables and their corresponding scores.
-#' If \code{plot} is TRUE, returns a ggplot object displaying the scores.
+#' @param data A data frame containing event report level data.
+#' @param group_var A character string naming the column that uniquely identifies events (e.g., "event_id").
+#' @param variables A character vector of column names to compute divergence scores for.
+#' @param normalize Logical, indicating whether to normalize the scores by the total number of unique values for each variable.
+#' @param plot Logical, indicating whether to return a ggplot object visualizing the scores.
+#'
+#' @return Either a tibble or a ggplot object, depending on the value of \code{plot}.
+#' If \code{plot = FALSE}, returns a tibble with two columns:
+#' \describe{
+#'   \item{variable}{The name of each variable.}
+#'   \item{dscore}{The mean divergence score or normalized score.}
+#' }
+#' If \code{plot = TRUE}, returns a lollipop-style plot showing divergence scores by variable.
 #'
 #' @importFrom dplyr group_by summarise ungroup across mutate left_join select starts_with
 #' @importFrom tidyr pivot_longer everything
@@ -26,6 +36,7 @@
 #'   deaths_best = c(10, 20, 5, 15, 10)
 #' )
 #' mean_dscore(df, "event_id", c("country", "actor1", "deaths_best"), normalize = TRUE, plot = TRUE)
+
 mean_dscore <- function(data, group_var, variables, normalize = FALSE, plot = FALSE) {
   # Ensure the input data is a dataframe
   if (!is.data.frame(data)) {

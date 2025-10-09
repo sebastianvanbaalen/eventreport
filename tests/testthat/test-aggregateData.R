@@ -132,4 +132,3 @@ test_that("aggregdateData returns the least precise value when using multiple pr
   expect_equal(result$city, "Smaland")
   expect_equal(result$actor, "Police")
 })
-

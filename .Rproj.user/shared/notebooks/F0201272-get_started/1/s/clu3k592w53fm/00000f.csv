@@ -1,6 +1,0 @@
-"0","df %>% "
-"0","  dplyr::select(event_id, city, location, actor1, deaths_best, source) %>% "
-"0","  dplyr::filter(event_id == ""CIV-0003"")"
-"2","Error in UseMethod(""select"") : 
-  no applicable method for 'select' applied to an object of class ""function""
-"

@@ -6,6 +6,7 @@
 # eventreport
 
 <!-- badges: start -->
+
 <!-- badges: end -->
 
 The goal of the `eventreport` package is to *diagnose*, *visualize*, and
@@ -15,34 +16,51 @@ package produces a dataset aggregated at the event level. The package
 also allows the user to diagnose how sensitive their event report level
 data is to aggregation choices. In addition, the package includes the
 Modes and Agents of Election-Related Violence in Côte d’Ivoire and Kenya
-(MAVERICK), an event report level dataset that records all documented
-instances of electoral violence from the first multiparty election to
-2022 in Côte d’Ivoire (1995-2022) and Kenya (1992-2022).
+(MAVERICK) dataset, an event report level dataset that records all
+documented instances of electoral violence from the first multiparty
+election to 2022 in Côte d’Ivoire (1995-2022) and Kenya (1992-2022).
 
-When using the data, please refer to the following working paper and
-codebook:
+When using the data, please refer to the following article and codebook:
 
-> Sebastian van Baalen & Kristine Höglund (2024) Agents of Electoral
-> Anarchy: Introducing the MAVERICK Dataset. Uppsala: Department of
-> Peace and Conflict Research, Uppsala University.
+> Sebastian van Baalen & Kristine Höglund (2026) Introducing the Modes
+> and Agents of Election-Related Violence in Côte d’Ivoire (MAVERICK)
+> datset. *Journal of Peace Research*, online first.
 >
 > Sebastian van Baalen, David Edberg Landeström, Tor Richardson-Golinski
-> & Kristine Höglund (2024) The MAVERICK Dataset Codebook Version 1.0.
+> & Kristine Höglund (2025) The MAVERICK Dataset Codebook Version 1.0.
 > Uppsala: Department of Peace and Conflict Research, Uppsala
 > University.
 
 For methodological details, and when using the package, please refer to
 the following working paper:
 
-> Sebastian van Baalen & Kristine Höglund (2024) Trials and
-> Triangulations: Aggregation Problems in Event Data on Political
-> Violence. Uppsala: Department of Peace and Conflict Research, Uppsala
-> University.
+> Sebastian van Baalen & Kristine Höglund (2025) Trials and
+> Triangulations: Analyzing Aggregation Sensitivity in Event Data on
+> Political Violence. Uppsala: Department of Peace and Conflict
+> Research, Uppsala University.
 
 ## Installation
 
-You can install the development version of `eventreport` from GitHub
-with:
+Once on CRAN, you can install the released version of **eventreport**
+from [CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("eventreport")
+
+
+``` r
+install.packages("eventreport")
+#> Installing package into '/private/var/folders/11/2qh97h552ms06rx7mxxn8wxw0000gn/T/RtmpGAqNlb/temp_libpath9f9b5c378edc'
+#> (as 'lib' is unspecified)
+#> Warning: package 'eventreport' is not available for this version of R
+#> 
+#> A version of this package for your version of R might be available elsewhere,
+#> see the ideas at
+#> https://cran.r-project.org/doc/manuals/r-patched/R-admin.html#Installing-packages
+```
+
+You can also install the development version of `eventreport` from
+GitHub with:
 
 ``` r
 # install.packages("devtools")
@@ -79,9 +97,9 @@ violence event.
 
 ## Why the `eventreport` package?
 
-`R` already contains some functionalities that can be used for
-aggregating event report level data to the event level, such as the
-`mean` and `median` base `R` calls. However, as we detail in the package
+`R` already contains some functions that can be used for aggregating
+event report level data to the event level, such as the `mean` and
+`median` base `R` calls. However, as we detail in the package
 introduction article, the aggregation of event reports often demands
 additional functionalities, such as the use of tie-break rules or
 information contained in meta variables.
@@ -141,7 +159,7 @@ mean_dscore(
 )
 ```
 
-<img src="man/figures/logo.pngunnamed-chunk-3-1.png" width="70%" />
+<img src="man/figures/logo.pngunnamed-chunk-4-1.png" width="70%" />
 
 For aggregating data, users can use `calc_mode` to find the mode value
 using two different tie-breaking rules:

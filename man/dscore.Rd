@@ -2,7 +2,7 @@
 % Please edit documentation in R/dscore.R
 \name{dscore}
 \alias{dscore}
-\title{Calculate Mean Reduced Unique Values Per Group}
+\title{Calculate discrepancy score}
 \usage{
 dscore(data, group_var, variables)
 }

@@ -17,6 +17,7 @@
 #' tie_break = c(1, 2, 1, 2)
 #' second_tie_break = c(1, 1, 2, 1)
 #' calc_min_precision(x, precision_var, tie_break, second_tie_break)
+
 calc_min_precision <- function(x, precision_var, tie_break = NULL, second_tie_break = NULL) {
   # Check for all NA precision values
   if (all(is.na(precision_var))) {

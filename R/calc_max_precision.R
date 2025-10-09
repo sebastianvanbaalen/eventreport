@@ -17,13 +17,14 @@
 #' tie_break = c(1, 2, 1, 2)
 #' second_tie_break = c(1, 1, 2, 1)
 #' calc_max_precision(x, precision_var, tie_break, second_tie_break)
+
 calc_max_precision <- function(x, precision_var, tie_break = NULL, second_tie_break = NULL) {
   # Check for all NA precision values
   if (all(is.na(precision_var))) {
     return(NA_character_)
   }
 
-  # Filter to maximum precision values
+  # Filter to maximum precision values (ignoring NA in precision_var)
   max_precision <- max(precision_var, na.rm = TRUE)
   valid_indices <- precision_var == max_precision
 
@@ -31,9 +32,20 @@ calc_max_precision <- function(x, precision_var, tie_break = NULL, second_tie_br
   tie_break_filtered <- if (!is.null(tie_break)) tie_break[valid_indices] else NULL
   second_tie_break_filtered <- if (!is.null(second_tie_break)) second_tie_break[valid_indices] else NULL
 
-  # Return empty string if no entries left after filtering
+  # If precision_var is valid but corresponding x is NA, return type-specific NA
+  if (all(is.na(x_filtered))) {
+    return(if (is.numeric(x)) NA_real_ else NA_character_)
+  }
+
+  # Remove entries where x is NA after filtering by precision_var
+  valid_x_indices <- !is.na(x_filtered)
+  x_filtered <- x_filtered[valid_x_indices]
+  tie_break_filtered <- if (!is.null(tie_break_filtered)) tie_break_filtered[valid_x_indices] else NULL
+  second_tie_break_filtered <- if (!is.null(second_tie_break_filtered)) second_tie_break_filtered[valid_x_indices] else NULL
+
+  # If no valid entries remain, return type-specific NA
   if (length(x_filtered) == 0) {
-    return("")
+    return(if (is.numeric(x)) NA_real_ else NA_character_)
   }
 
   # Use calc_mode to determine the mode with potential tie-breaking

@@ -16,6 +16,7 @@
 #' calc_mode(data)  # Expect: "Indeterminate"
 #' calc_mode(data, tie_break)  # Expect: "Indeterminate"
 #' calc_mode(data, tie_break, second_tie_break)  # Expect: "banana"
+
 calc_mode <- function(x, tie_break = NULL, second_tie_break = NULL) {
   # Calculate frequencies of each element
   freq <- table(x, useNA = "ifany")

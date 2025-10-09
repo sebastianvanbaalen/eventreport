@@ -8,7 +8,6 @@
 #' - `aggregate_maverick_con`: Function for [describe what this does].
 #' - `mean_dscore`: Function for [describe what this does].
 #'
-#' @docType package
 #' @name eventreport
 #'
 #' @author
@@ -18,5 +17,5 @@
 #' Sebastian van Baalen & Kristine Hoglund (2024) Trials and Triangulations:
 #' Aggregation Problems in Event Data on Political Violence. Uppsala: Uppsala University.
 #'
-#' @keywords package
-NULL
+#' @keywords internal
+"_PACKAGE"

@@ -1,4 +1,7 @@
-#' A function for combining strings from a character variable
+#' Combine strings from a character variable
+#'
+#' This function combines strings from a character variable.
+#'
 #' @param str_var A character vector.
 #' @return Returns a single character string with unique strings concatenated by semicolons.
 #' @importFrom dplyr summarise group_by
@@ -6,8 +9,8 @@
 #' @examples
 #' aggregate_strings(c("apple", "banana", "apple", "Unknown", "orange", " "))
 #' @export
+
 aggregate_strings <- function(str_var) {
-  # Define a safe version of the function that handles incorrect input types
   safe_aggregate_strings <- possibly(function(str_var) {
     if (!is.character(str_var)) {
       warning("Input 'str_var' must be a character variable.")

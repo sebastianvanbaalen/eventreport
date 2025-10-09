@@ -2,6 +2,7 @@
 % Please edit documentation in R/eventreport-package.R
 \docType{package}
 \name{eventreport}
+\alias{eventreport-package}
 \alias{eventreport}
 \title{eventreport: Tools for Aggregating Event Data}
 \description{
@@ -22,4 +23,4 @@ Aggregation Problems in Event Data on Political Violence. Uppsala: Uppsala Unive
 \author{
 Sebastian van Baalen & Kristine Hoglund (2024)
 }
-\keyword{package}
+\keyword{internal}

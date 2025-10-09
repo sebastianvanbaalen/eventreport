@@ -2,7 +2,7 @@
   packageStartupMessage(
     "Thank you for using the eventreport package! ",
     "Please cite as:",
-    " Sebastian van Baalen & Kristine Hoglund (2024) Trials and Triangulations: Aggregation Problems in Event Data on Political Violence. Uppsala: Uppsala University."
+    " Sebastian van Baalen & Kristine Hoglund (2025) Trials and Triangulations: Analyzing Aggregation Sensitivity in Event Data on Political Violence. Uppsala: Uppsala University."
   )
 }
 

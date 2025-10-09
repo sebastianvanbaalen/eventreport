@@ -28,29 +28,42 @@ Welcome to the `eventreport` package. `eventreport` includes a set of functions 
 
 This vignette explains what event report level data is and how to work with such data using the functions contained in this package.
 
-Before starting, we load the `tidyverse` package for writing tidy code, the `tinytable` package to draw easy-to-read tables, as well as a small subset of the `maverick_event_report` dataset to exemplify the package functions. For users that are interested in working with the MAVERICK dataset also contained in this package, we refer to the [Working with the MAVERICK dataset](vignette:maverick) vignette.
+Before starting, we load the `tidyverse` package for writing tidy code, the `tinytable` package to draw easy-to-read tables, as well as a small subset of the `maverick_event_report` dataset to exemplify the package functions. For users that are interested in working with the MAVERICK dataset contained in this package, we refer to the MAVERICK [documentation](https://doi.org/10.7910/DVN/GRXTTZ).
+
+```{r, message = FALSE, warning = FALSE}
+#install.packages("tidyverse")
+#install.packages("tinytable")
+
+library(tidyverse)
+library(tinytable)
+```
 
 ## What is event report level data?
 
-Event report level data refers to data where each observation is an event that takes place on a single day and in a particular location *as reported in a single source*. The report level means that multiple reports about the same event constitute separate observations. For example, if both BBC and Reuters report about a violent post-election demonstration, the demonstration is the event, whereas the BBC and Reuters reports constitute the *event reports*. The table below provides an example of event report level data from the MAVERICK dataset, and lists 11 unique reports about a single electoral violence event.
+Event report level data refers to data where each observation is an event that takes place on a single day and in a particular location *as reported in a single source*. The report level means that multiple reports about the same event constitute separate observations. For example, if both BBC and Reuters report on a violent post-election demonstration, the demonstration is the event, whereas the BBC and Reuters reports constitute the *event reports*. The table below provides an example of event report level data from the MAVERICK dataset, and lists 11 unique reports about a single electoral violence event.
 
-```{r, echo = FALSE, results = 'asis'}
-df %>% 
+```{r, echo = FALSE}
+table <- df %>% 
   dplyr::select(event_id, city, location, actor1, deaths_best, source) %>% 
-  dplyr::filter(event_id == "CIV-0003")
+  dplyr::filter(event_id == "CIV-0003") %>% 
+  head()
+
+tt(table)
 ```
 
 Before using the `eventreport` package, make sure that your data is recorded at the event report level and not the event level. In addition, you need a column that allows you to group event reports concerning the same event together. For example, in the MAVERICK dataset, the `event_id` column identifies which reports are about the same event.
 
 ## Why work with event report data?
 
-... We therefore recommend all package users to also consult the associated article, which provides a detailed overview of the strengths and limitations of our suggested approach, as well as the underlying reasoning behind the different aggregation functions [@vanbaalenhoglund2024b]. For other in-depth analyses of the benefits and limitations of working with event report level data and automatic aggregation procedures, we recommend @cookweidmann2019 and @weidmanngeelmuydenrod2015.
+Coding event reports rather than events has several benefits [see e.g. @cookweidmann2019; @weidmanngeelmuydenrod2015]. First, this coding procedure makes the information extraction step more transparent and helps preserve the raw data contained in the source material. Second, as the aggregation of multiple event reports into single events implies making decisions about report credibility and contradictory information, this coding procedure makes the aggregation process more transparent, flexible, and reproducible. Third, by automating the aggregation process, the coding procedure allows users to replicate their analyses using different aggregation models and to override default aggregation rules and instead develop their own procedures. Fourth, by preserving the raw event reports, this data structure allows users to also use the data to investigate reporting biases and different approaches to improving data quality.
+
+Given the particularities of event report data, we recommend all package users to also consult the associated methods paper, which provides a detailed overview of the strengths and limitations of our suggested approach, as well as the underlying reasoning behind the different aggregation functions [@vanbaalenhoglund2025]. For other in-depth analyses of the benefits and limitations of working with event report level data and automatic aggregation procedures, we recommend @cookweidmann2019 and @weidmanngeelmuydenrod2015.
 
 ## Why the `eventreport` package?
 
-Standard statistics software, such as `R`, already contain some functionalities that can be used for aggregating event report level data to the event level. @cookweidmann2019, for instance, use base `R` functions such as `max`, `min`, and `mean` to aggregate the [Mass Mobilization in Autocracies Database](https://mmadatabase.org/), an event report level dataset on protest events. However, as we have detailed elsewhere [@vanbaalenhoglund2024b], the aggregation of event reports often demands additional functionalities, such as the use of tie-break rules or information contained in meta variables.
+Standard statistics software, such as `R`, already contain some functionalities that can be used for aggregating event report level data to the event level. @cookweidmann2019, for instance, use base `R` functions such as `max`, `min`, and `mean` to aggregate the [Mass Mobilization in Autocracies Database](https://mmadatabase.org/), an event report level dataset on protest events. However, as we have detailed elsewhere [@vanbaalenhoglund2025], the aggregation of event reports often demands additional functionalities, such as the use of tie-break rules or information contained in meta variables.
 
-The `eventreport` package adds several functionalities not contained in existing software. Among those benefits, the package is:
+The `eventreport` package adds several functionalities not contained in existing software. Among those benefits, the package:
 
 -   **Handles different variable classes:** `eventreport` handles a range of different variables, including character, date, numeric, and binary numeric variables. This feature makes the package ideal for working with event report datasets that include different variable classes.
 
@@ -78,9 +91,9 @@ library(eventreport)
 
 ## Aggregation diagnostics
 
-Event report level data comes can come in many forms, where some datasets only include events recorded by at least two sources, whereas other datasets include both single- and multi-source events. Moreover, some variables may harbor more divergences in their values for the same event than other variables. These differences mean that not all datasets and variables are equally sensitive to aggregation choices [@vanbaalenhoglund2024b].
+Event report level data can come in many forms, where some datasets only include events recorded by at least two sources, whereas other datasets include both single- and multi-source events. Moreover, some variables may harbor more divergences in their values for the same event than other variables. These differences mean that not all datasets and variables are equally sensitive to aggregation choices [@vanbaalenhoglund2025].
 
-### dscore
+### Calculate unique values using `dscore`
 
 `eventreport` includes several functions that allow users to diagnose their event report level data. `dscore` calculates the total number of unique values for each event (subtracted by 1 so that it only captures divergences). This *divergence score* allows users to assess how sensitive particular events and variables are to how they aggregate the event report level data:
 
@@ -93,9 +106,9 @@ dscore(
   head(10)
 ```
 
-From the above output, we can see that event CIV-0003 stands out as particularly sensitive to aggregation choices, as the variable `actor1` can take a total of 5 additional values beyond the one chosen by a particular aggregation choice. The variable `deaths_best` can take 3 additional values. In contrast, aggregation choices will not matter for the events CIV-0001, CIV-0006, CIV-0007, CIV-0008, and CIV-0010, as there are no additional values that the chosen variables can take.
+From the above output, we can see that event CIV-0003 stands out as particularly sensitive to aggregation choices, as the variable `actor1` can take a total of 3 additional values beyond the one chosen by a particular aggregation choice. The variable `deaths_best` can take 4 additional values. In contrast, aggregation choices will not matter for the events CIV-0002, CIV-0008, CIV-0009, CIV-0010, CIV-0011, and CIV-0012, as there are no additional values that the chosen variables can take.
 
-### mean_dscore
+### Calculate the average number of unique values using `mean_dscore`
 
 We can also calculate *mean* divergence scores for each variable to get a better sense of what variables are most sensitive to aggregation choices. The mean divergence score is calculated as the average number of divergent values per event and variable, and returns a dataframe containing the variable names and the mean divergence scores:
 
@@ -107,7 +120,7 @@ mean_dscore(
   )
 ```
 
-From the table above, we learn that some variables are more sensitive to aggregation choices than others. For example, while the `country` variable is not at all sensitive to aggregation choices, the `actor1` and `actor2` variables are comparatively more sensitive to how we decide to aggregate the data.
+From the table above, we learn that some variables are more sensitive to aggregation choices than others. For example, while the `country` variable is not at all sensitive to aggregation choices, the `actor1` and `deaths_best` variables are comparatively more sensitive to how we decide to aggregate the data.
 
 The raw divergence score can sometimes be misleading, as variables differ in the number of possible variables. Hence, users can also calculate *normalized* mean divergence scores for each variable with the `normalize = TRUE` argument, which returns the mean number of divergences divided by the total number of unique values in each variable:
 
@@ -123,13 +136,41 @@ mean_dscore(
 Finally, users can take a visual look at the mean and normalized divergence scores by using the `plot = TRUE` argument to return a ggplot object:
 
 ```{r, fig.width=6, fig.height=4, dpi=150, out.width="70%"}
-# mean_dscore(
-#   df,
-#   group_var = "event_id",
-#   variables = c("country", "actor1", "deaths_best"),
-#   normalize = TRUE,
-#   plot = TRUE
-#   )
+mean_dscore(
+  df,
+  group_var = "event_id",
+  variables = c("country", "actor1", "deaths_best"),
+  normalize = TRUE,
+  plot = TRUE
+  )
+```
+
+### Calculate multiple aggregation diagnostics using `aggregation_diagnostics`
+
+`eventreport` provides convenience functions for calculating six different aggregation diagnostics. The six diagnostics help evaluate how much disagreement exists between different event reports describing the same event.
+
+-   **Mean divergence** (`mean_dscore`) shows how often values differ across reports by counting how many additional unique values are reported per event and variable.
+
+-   **Normalized divergence** (`mean_dscore(normalize = TRUE)` puts this into perspective by dividing the divergence by the total number of possible unique values, making it easier to compare across variables.
+
+-   **Mean standard deviation** (`mean_sd`) measures how much reported numbers (like deaths or injuries) vary around their average for each event.
+
+-   **Mean range** (`mean_range`) captures the distance between the lowest and highest reported values, highlighting extreme differences.
+
+-   **Share of events with disagreement** (`event_level_disagreement)`, the most easily interpretable metric, tells us how often at least two reports disagree on a particular variable value.
+
+-   **Modal confidence (`modal_confidence`)** shows how dominant the most commonly reported value is-high scores mean most sources agree on the modal value, while lower scores suggest disagreement.
+
+To easily compare different aggregation diagnostics, users can run all diagnostics for a set of variables with one command:
+
+```{r}
+diagnostics <- aggregation_diagnostics(
+  df,
+  group_var = "event_id",
+  variables = c("city", "deaths_best", "actor1")
+)
+
+tt(diagnostics)
 ```
 
 ## Use the aggregation functions
@@ -156,10 +197,16 @@ calc_mode(
 
 In cases where no mode value can be found after two tie-breaks, the `calc_mode` function returns the value `"Indeterminate"`, thereby forcing users to explicitly make a decision on how to handle multi-modal vectors.
 
+```{r}
+calc_mode(
+  c("Sweden", "Sweden", "Denmark", "Denmark")
+)
+```
+
 The `calc_mode` function treats both NA values and empty strings as real values, and hence returns NA or empty strings whenever those are the most common values:
 
 ```{r}
-eventreport::calc_mode(
+calc_mode(
   c("Sweden", "", "", "Denmark")
 )
 ```
@@ -169,7 +216,7 @@ eventreport::calc_mode(
 Find the mode value of a character vector while ignoring NA values and empty strings:
 
 ```{r}
-eventreport::calc_mode_na_ignore(
+calc_mode_na_ignore(
   c("Sweden", "", "", "Denmark"),
   tie_break = c(1, 1, 1, 1),
   second_tie_break = c(4, 1, 1, 1)
@@ -330,7 +377,7 @@ conservative <- df %>%
     find_min = c("deaths_best", "injuries_best"),
     tie_break = "source_classification",
     second_tie_break = "certain",
-    aggregation_name = "Conservative"
+    aggregation_name = "Most-conservative"
   ) %>% 
   utils::head(10)
 
@@ -341,7 +388,7 @@ maximalist <- df %>%
     find_max = c("deaths_best", "injuries_best"),
     tie_break = "source_classification",
     second_tie_break = "certain",
-    aggregation_name = "Maximalist"
+    aggregation_name = "Most-informative"
   ) %>% 
   utils::head(10)
 
@@ -354,46 +401,46 @@ rbind(conservative, maximalist) %>%
 To demonstrate how `eventreport` enables users to account for aggregation sensitivity in their analyses based on event report level data, we end with a short empirical illustration. Let's say that we want to explore the temporal dynamics of electoral violence severity during Côte d'Ivoire's 2010-2011 election crisis. Using the full MAVERICK dataset, we can quickly see that such an analysis may be sensitive to aggregation choices:
 
 ```{r}
-# Calculate the average discrepancy score
+# Calculate the average divergence score
 
 mean_dscore(
-  small_maverick_event_report,
+  maverick_event_report,
   group_var = "event_id",
   variables = c("date_start", "deaths_best")
 )
 ```
 
-We then proceed to create two different event datasets for the variables we are interested in: a *typical* aggregation set that uses the mode date and mode death estimate, and a *maximalist* aggregation set that uses the latest date and highest death estimate. Moreover, we combine these dataframes into a single dataframe.
+We then proceed to create two different event datasets for the variables we are interested in: a *representative* aggregation set that uses the mode date and mode death estimate, and an *informative* aggregation set that uses the latest date and highest death estimate. Moreover, we combine these data frames into a single data frame.
 
 ```{r}
-# Create typical aggregation set
+# Create representative aggregation set
 
-# typical <- maverick_event_report %>% 
-#   aggregateData(
-#     group_var = "event_id",
-#     find_mode = "country",
-#     find_mode_numeric = "deaths_best",
-#     find_mode_date = "date_start",
-#     tie_break = "source_classification",
-#     second_tie_break = "certain",
-#     aggregation_name = "Typical"
-#   )
-# 
-# # Create maximalist aggregation set
-# 
-# maximalist <- maverick_event_report %>% 
-#   aggregateData(
-#     group_var = "event_id",
-#     find_mode = "country",
-#     find_max = c("deaths_best", "date_start"),
-#     tie_break = "source_classification",
-#     second_tie_break = "certain",
-#     aggregation_name = "Maximalist"
-#   )
-# 
-# # Combine dataframes
-# 
-# combined <- rbind(typical, maximalist) 
+representative <- maverick_event_report %>%
+  aggregateData(
+    group_var = "event_id",
+    find_mode = "country",
+    find_mode_numeric = "deaths_best",
+    find_mode_date = "date_start",
+    tie_break = "source_classification",
+    second_tie_break = "certain",
+    aggregation_name = "Representative"
+  )
+
+# Create informative aggregation set
+
+informative <- maverick_event_report %>%
+  aggregateData(
+    group_var = "event_id",
+    find_mode = "country",
+    find_max = c("deaths_best", "date_start"),
+    tie_break = "source_classification",
+    second_tie_break = "certain",
+    aggregation_name = "Informative"
+  )
+
+# Combine dataframes
+
+combined <- rbind(representative, informative)
 ```
 
 Because aggregation sensitivity is only an issue for events recorded in at least two sources, we subset the dataset to only contain multi-source events. To explore electoral violence severity over time during the Ivorian election crisis, we then use the `dplyr` and `lubridate` packages to convert `date_start` into a week variable, and then calculate the number of estimated electoral violence deaths per week.
@@ -401,40 +448,39 @@ Because aggregation sensitivity is only an issue for events recorded in at least
 ```{r}
 # Subset and calculate deaths per week
 
-# maverick_time_series_week <- combined %>% 
-#   dplyr::filter(number_of_sources > 1) %>% 
-#   dplyr::mutate(date_start = as.Date(as.character(date_start), format = "%Y-%m-%d")) %>%
-#   dplyr::mutate(week_start = lubridate::floor_date(date_start, unit = "week")) %>%
-#   tidyr::complete(
-#     week_start = seq(ymd("1995-01-01"), ymd("2023-12-31"), by = "1 week"),
-#     country, aggregation, fill = list(deaths_best = 0)
-#   ) %>%
-#   dplyr::group_by(week_start, country, aggregation) %>%
-#   dplyr::summarize(deaths_best = sum(deaths_best, na.rm = TRUE), .groups = "drop")
+maverick_time_series_week <- combined %>%
+  dplyr::filter(number_of_sources > 1) %>%
+  dplyr::mutate(date_start = as.Date(as.character(date_start), format = "%Y-%m-%d")) %>%
+  dplyr::mutate(week_start = lubridate::floor_date(date_start, unit = "week")) %>%
+  tidyr::complete(
+    week_start = seq(ymd("1995-01-01"), ymd("2023-12-31"), by = "1 week"),
+    country, aggregation, fill = list(deaths_best = 0)
+  ) %>%
+  dplyr::group_by(week_start, country, aggregation) %>%
+  dplyr::summarize(deaths_best = sum(deaths_best, na.rm = TRUE), .groups = "drop")
 ```
 
-Finally, filter the data to the relevant time period (October 2010 to June 2011) and plot the estimated number of deaths per week and aggregation approach using the `ggplot2` package. As the figure clearly shows, the total number of estimated deaths per week is highly sensitive to our aggregation choices:
+Finally, we filter the data to the relevant time period (October 2010 to June 2011) and plot the estimated number of deaths per week and aggregation approach using the `ggplot2` package. As the figure clearly shows, the total number of estimated deaths per week (as reported by at least two sources) is highly sensitive to our aggregation choices:
 
 ```{r, fig.width=7, fig.height=4, dpi=150, out.width="70%"}
 
-# maverick_time_series_week %>% 
-#   dplyr::filter(
-#     week_start > "2010-09-30" 
-#     & week_start < "2011-06-01"
-#     & country == "Ivory Coast"
-#   ) %>% 
-#   ggplot2::ggplot() +
-#   ggplot2::geom_line(aes(y = deaths_best, x = week_start, color = aggregation), linewidth = 1) +
-#   ggplot2::scale_x_date(
-#     breaks = seq(as.Date("2010-10-01"), as.Date("2011-06-01"), by = "1 month"),
-#     date_labels = "%b %Y"
-#   ) +
-#   ggplot2::scale_y_continuous(breaks = seq(0, 120, 20)) +
-#   ggplot2::labs(
-#     x = NULL, 
-#     y = "Best estimated number of weekly deaths"
-#   ) +
-#   ggplot2::theme_bw()
+maverick_time_series_week %>%
+  dplyr::filter(
+    week_start > "2010-09-30"
+    & week_start < "2011-06-01"
+    & country == "Ivory Coast"
+  ) %>%
+  ggplot2::ggplot() +
+  ggplot2::geom_line(aes(y = deaths_best, x = week_start, color = aggregation), linewidth = 1) +
+  ggplot2::scale_x_date(
+    breaks = seq(as.Date("2010-10-01"), as.Date("2011-06-01"), by = "1 month"),
+    date_labels = "%b %Y"
+  ) +
+  ggplot2::labs(
+    x = NULL,
+    y = "Best estimated number of weekly deaths"
+  ) +
+  ggplot2::theme_bw()
 ```
 
 ## References

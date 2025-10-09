@@ -1,4 +1,4 @@
-#' Calculate Mean Reduced Unique Values Per Group
+#' Calculate discrepancy score
 #'
 #' This function computes the mean number of unique values minus one for each specified variable
 #' within each group specified by the group_var. It is designed to provide insights into the
@@ -24,6 +24,7 @@
 #' )
 #' result <- dscore(df, "group", c("age", "gender", "income"))
 #' print(result)
+
 dscore <- function(data, group_var, variables) {
   # Ensure the input data is a dataframe
   if (!is.data.frame(data)) {

@@ -1,6 +1,6 @@
-#' Aggregate Data
+#' Aggregate event report data
 #'
-#' This function aggregates data based on the specified grouping variable and various aggregation criteria.
+#' This function aggregates event report data based on a specified grouping variable and various aggregation criteria.
 #'
 #' @param data A data frame containing the data to be aggregated.
 #' @param group_var A string specifying the variable to group by. Default is "event_id".
@@ -14,6 +14,7 @@
 #' @param combine_strings A vector of variable names for which to combine strings.
 #' @param find_max A vector of variable names for which to find the maximum value.
 #' @param find_min A vector of variable names for which to find the minimum value.
+#' @param summarize_vars A vector of variable names for which to sum all values.
 #' @param aggregation_name A string specifying the name of the aggregation.
 #' @param tie_break A string specifying the tie break column name. Default is "default_tie_break".
 #' @param second_tie_break A string specifying the second tie break column name. Default is "default_tie_break".
@@ -31,23 +32,25 @@
 #' @importFrom rlang quo
 #' @importFrom rlang expr
 #' @importFrom stats setNames
+#' @examples
+#' small_maverick_event_report %>%
+#'   aggregateData(group_var = "event_id", find_mode = "city") %>%
+#'   utils::head(10)
 
 aggregateData <- function(
     data, group_var = "event_id",
     find_mode = NULL, find_mode_na_ignore = NULL, find_mode_bin = NULL, find_mode_date = NULL,
     find_mode_numeric = NULL, find_least_precise = NULL, find_most_precise = NULL,
-    combine_strings = NULL, find_max = NULL, find_min = NULL, aggregation_name = NULL,
+    combine_strings = NULL, find_max = NULL, find_min = NULL, summarize_vars = NULL, aggregation_name = NULL,
     tie_break = "default_tie_break", second_tie_break = "default_tie_break"
 ) {
   suppressWarnings({
-    # Add a default tie break column to the data if not already present
     if (!"default_tie_break" %in% names(data)) {
       data$default_tie_break <- 1
     }
 
     summarise_list <- list()
 
-    # Add additional summarising logic as needed for other variables
     if (!is.null(find_mode)) {
       cat_vars <- syms(find_mode)
       summarise_list[find_mode] <- purrr::map(cat_vars, ~quo(calc_mode(!!.x, !!sym(tie_break), !!sym(second_tie_break))))
@@ -108,7 +111,10 @@ aggregateData <- function(
       }), sapply(find_most_precise, function(x) x$var)))
     }
 
-
+    if (!is.null(summarize_vars)) {
+      sum_vars <- syms(summarize_vars)
+      summarise_list[summarize_vars] <- purrr::map(sum_vars, ~quo(sum(!!.x, na.rm = TRUE)))
+    }
 
     result <- data %>%
       group_by(!!sym(group_var)) %>%

@@ -6,6 +6,7 @@
 #' @examples
 #' calc_mode_date(c("2021-01-01", "2021-01-02", "2021-01-01"))
 #' @export
+
 calc_mode_date <- function(x) {
     if (!is.character(x)) {
       warning("All 'x' inputs must be a character variable representing a date in the format YYYY-MM-DD.")
