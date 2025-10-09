@@ -1,8 +1,3 @@
----
-editor_options: 
-  markdown: 
-    wrap: 72
----
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -81,7 +76,7 @@ MAVERICK dataset, and lists six unique reports about a single electoral
 violence event.
 
 | event_id | city | location | actor1 | actor1_type | deaths_best | source |
-|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+|----|----|----|----|----|----|----|
 | CIV-0004 | Abidjan | Abobo | Unknown security force (Côte d’Ivoire) | Security forces | 5 | Amnesty International (All Africa) (2011-01-12) Fresh Violence Erupts as Armed Groups Clash |
 | CIV-0004 | Abidjan | Abobo | Unknown security force (Côte d’Ivoire) | Security forces | 1 | LEJD (2011-01-12) Nouveaux affrontements en Côte d’Ivoire |
 | CIV-0004 | Abidjan |  | Unknown security force (Côte d’Ivoire) | Security forces | 5 | Reuters (2011-01-12) More die in Cote d’Ivoire violence |
@@ -101,36 +96,35 @@ information contained in meta variables.
 The `eventreport` package adds several functionalities not contained in
 existing software. Among those benefits, the package:
 
--   **Handles different variable classes:** `eventreport` handles a
-    range of different variables, including character, date, numeric,
-    and binary numeric variables. This feature makes the package ideal
-    for working with event report datasets that include different
-    variable classes.
+- **Handles different variable classes:** `eventreport` handles a range
+  of different variables, including character, date, numeric, and binary
+  numeric variables. This feature makes the package ideal for working
+  with event report datasets that include different variable classes.
 
--   **Enables tie-breaking rules:** many vectors are multi-modal,
-    meaning that simple functions for identifying the most frequent
-    values will yield multiple results. `eventreport` therefore enables
-    users to specify up to two tie-breaking rules that help adjudicate
-    between multiple modes variables.
+- **Enables tie-breaking rules:** many vectors are multi-modal, meaning
+  that simple functions for identifying the most frequent values will
+  yield multiple results. `eventreport` therefore enables users to
+  specify up to two tie-breaking rules that help adjudicate between
+  multiple modes variables.
 
--   **Integrates precision scores:** sometimes researchers are
-    interested in recording the most precise value, such as more precise
-    location estimates or more precise actor names. `eventreport` allows
-    users to specify precision score variables that help prioritize what
-    values to select when the values cannot be ranked.
+- **Integrates precision scores:** sometimes researchers are interested
+  in recording the most precise value, such as more precise location
+  estimates or more precise actor names. `eventreport` allows users to
+  specify precision score variables that help prioritize what values to
+  select when the values cannot be ranked.
 
--   **Provides simple functions:** aggregating event report level data
-    is a complex coding project. `eventreport` makes this procedure more
-    straightforward by providing simple functions that carry out complex
-    tasks. All functions were developed in the context of a concrete
-    event report level data collection effort, and are therefore both
-    needs-based and well-tested.
+- **Provides simple functions:** aggregating event report level data is
+  a complex coding project. `eventreport` makes this procedure more
+  straightforward by providing simple functions that carry out complex
+  tasks. All functions were developed in the context of a concrete event
+  report level data collection effort, and are therefore both
+  needs-based and well-tested.
 
--   **Allows easy customization:** the combination of simple functions
-    and several convenience functions allows users to stipulate a range
-    of complex aggregation rule sets with minimal coding. Moreover,
-    because `eventreport` is `tidyverse` compatible, users can integrate
-    the package functions in a tidy workflow.
+- **Allows easy customization:** the combination of simple functions and
+  several convenience functions allows users to stipulate a range of
+  complex aggregation rule sets with minimal coding. Moreover, because
+  `eventreport` is `tidyverse` compatible, users can integrate the
+  package functions in a tidy workflow.
 
 ## Examples
 
@@ -154,7 +148,7 @@ mean_dscore(
 )
 ```
 
-<img src="man/figures/logo.pngunnamed-chunk-4-1.png" width="70%"/>
+<img src="man/figures/logo.pngunnamed-chunk-3-1.png" width="70%" />
 
 For aggregating data, users can use `calc_mode` to find the mode value
 using two different tie-breaking rules:

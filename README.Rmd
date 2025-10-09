@@ -41,11 +41,8 @@ For methodological details, and when using the package, please refer to the foll
 Once on CRAN, you can install the released version of **eventreport** from [CRAN](https://CRAN.R-project.org) with:
 
 ```r
-install.packages("eventreport")
-
-```{r}
-install.packages("eventreport")
-```
+#install.packages("eventreport")
+````
 
 You can also install the development version of `eventreport` from GitHub with:
 
