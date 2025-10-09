@@ -75,7 +75,7 @@ mean_sd <- function(data, group_var, variables) {
     summarise(
       across(
         everything(),
-        \(x) mean(x, na.rm = TRUE)
+        function(x) mean(x, na.rm = TRUE)
       )
     ) %>%
     pivot_longer(
