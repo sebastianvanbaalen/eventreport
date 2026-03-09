@@ -48,3 +48,12 @@ Config/testthat/edition: 3
 VignetteBuilder: knitr
 URL: https://github.com/sebastianvanbaalen/eventreport
 BugReports: https://github.com/sebastianvanbaalen/eventreport/issues
+References: van Baalen, Sebastian and Kristine Höglund (2026).
+    "Trials and Triangulations: Analyzing Aggregation Sensitivity in
+    Event Data on Political Violence". International Studies Quarterly
+    70(1): sqag014. doi:10.1093/isq/sqag014.
+    Users of the enclosed MAVERICK dataset should also cite:
+    van Baalen, Sebastian and Kristine Höglund (2026).
+    "Introducing the Modes and Agents of Election-Related Violence in
+    Côte d’Ivoire and Kenya (MAVERICK) dataset". Journal of Peace Research.
+    doi:10.1093/jopres/xjaf012

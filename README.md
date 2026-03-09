@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# eventreport <a href="#"><img src="man/figures/logo.png" align="right" height="200" style="margin-left:15px; margin-bottom:5px;" /></a>
+# eventreport <a href="#"><img src="man/figures/logo.png" align="right" height="200" style="margin-left:15px; margin-bottom:5px;"/></a>
 
 <!-- badges: start -->
 
@@ -22,25 +22,26 @@ When using the data, please refer to the following article and codebook:
 
 > Sebastian van Baalen & Kristine Höglund (2026) Introducing the Modes
 > and Agents of Election-Related Violence in Côte d’Ivoire (MAVERICK)
-> datset. *Journal of Peace Research*, online first.
+> Dataset. *Journal of Peace Research* 63(1): 98-106.
+> [doi.org/10.1093/jopres/xjaf012](https://doi.org/10.1093/jopres/xjaf012)
 >
 > Sebastian van Baalen, David Edberg Landeström, Tor Richardson-Golinski
-> & Kristine Höglund (2025) The MAVERICK Dataset Codebook Version 1.0.
+> & Kristine Höglund (2026) The MAVERICK Dataset Codebook Version 1.0.
 > Uppsala: Department of Peace and Conflict Research, Uppsala
 > University.
 
 For methodological details, and when using the package, please refer to
-the following working paper:
+the following article:
 
-> Sebastian van Baalen & Kristine Höglund (2025) Trials and
+> Sebastian van Baalen & Kristine Höglund (2026) Trials and
 > Triangulations: Analyzing Aggregation Sensitivity in Event Data on
-> Political Violence. Uppsala: Department of Peace and Conflict
-> Research, Uppsala University.
+> Political Violence. *International Studies Quarterly* 70(1):sqag014.
+> [doi.org/10.1093/isq/sqag014](https://doi.org/10.1093/isq/sqag014)
 
 ## Installation
 
-Once on CRAN, you can install the released version of **eventreport**
-from [CRAN](https://CRAN.R-project.org) with:
+You can install the released version of **eventreport** from
+[CRAN](https://CRAN.R-project.org) with:
 
 ``` r
 #install.packages("eventreport")
