@@ -8,3 +8,8 @@
 ^Meta$
 ^data-raw$
 ^CRAN-SUBMISSION$
+^\.github$
+^\.claude$
+^\.Renviron$
+^CLAUDE\.md$
+^README\.html$
