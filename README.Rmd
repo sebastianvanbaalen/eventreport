@@ -19,7 +19,9 @@ knitr::opts_chunk$set(
 # eventreport <a href="#"><img src="man/figures/logo.png" align="right" height="200" style="margin-left:15px; margin-bottom:5px;"/></a>
 
 <!-- badges: start -->
-
+[![CRAN status](https://www.r-pkg.org/badges/version/eventreport)](https://CRAN.R-project.org/package=eventreport)
+[![R-CMD-check](https://github.com/sebastianvanbaalen/eventreport/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/sebastianvanbaalen/eventreport/actions/workflows/R-CMD-check.yaml)
+[![CRAN downloads](https://cranlogs.r-pkg.org/badges/grand-total/eventreport)](https://CRAN.R-project.org/package=eventreport)
 <!-- badges: end -->
 
 The goal of the `eventreport` package is to *diagnose*, *visualize*, and *aggregate* event report level data to the event level. Users provide an event report level dataset, specify their aggregation rules, and the package produces a dataset aggregated at the event level. The package also allows the user to diagnose how sensitive their event report level data is to aggregation choices. In addition, the package includes the Modes and Agents of Election-Related Violence in Côte d'Ivoire and Kenya (MAVERICK) dataset, an event report level dataset that records all documented instances of electoral violence from the first multiparty election to 2022 in Côte d'Ivoire (1995-2022) and Kenya (1992-2022).
