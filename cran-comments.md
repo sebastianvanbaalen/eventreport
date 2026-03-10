@@ -4,11 +4,16 @@ Changes in this version:
 - Updated DESCRIPTION, CITATION, startup message, and documentation.
 
 ── R CMD check results ───────────────────────────────────────────────────────────────────────────────────── eventreport 0.1.2 ────
-Duration: 1m 42.2s
+Duration: 59.8s
 
-❯ checking for future file timestamps ... NOTE
-  unable to verify current time
+0 errors ✔ | 0 warnings ✔ | 0 notes ✔
 
-0 errors ✔ | 0 warnings ✔ | 1 note ✖
+R CMD check succeeded
 
-This appears to be an issue with the clock server, and not with this package: https://stackoverflow.com/questions/63613301/r-cmd-check-note-unable-to-verify-current-time
+## URL check note
+
+`urlchecker::url_check()` reports 403 (Forbidden) errors for several DOI
+links (doi.org/10.1093/isq/sqag014, doi.org/10.1093/jopres/xjaf012,
+doi.org/10.1111/ajps.12398, doi.org/10.1177/0022343314523807). These DOIs
+are valid and resolve correctly in a browser. The 403 responses are caused
+by the publisher servers rejecting automated requests.
