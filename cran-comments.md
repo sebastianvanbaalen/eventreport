@@ -10,6 +10,14 @@ Duration: 59.8s
 
 R CMD check succeeded
 
+## Win-Builder (R-devel)
+
+0 errors | 0 warnings | 1 note
+
+The NOTE flags "Baalen" and "glund" (from "Höglund") as possibly
+misspelled words in DESCRIPTION. These are the authors' surnames
+and are spelled correctly.
+
 ## URL check note
 
 `urlchecker::url_check()` reports 403 (Forbidden) errors for several DOI
