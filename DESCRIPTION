@@ -20,6 +20,10 @@ Description: Diagnose, visualize, and aggregate event report
     an event report level dataset that records all documented instances of 
     electoral violence from the first multiparty election to 2022 in 
     Côte d'Ivoire (1995-2022) and Kenya (1992-2022).
+    For more details see van Baalen and Höglund (2026)
+    <doi:10.1093/isq/sqag014>. Users of the enclosed MAVERICK dataset
+    should also cite van Baalen and Höglund (2026)
+    <doi:10.1093/jopres/xjaf012>.
 License: CC BY 4.0
 Encoding: UTF-8
 LazyData: true
@@ -48,12 +52,3 @@ Config/testthat/edition: 3
 VignetteBuilder: knitr
 URL: https://github.com/sebastianvanbaalen/eventreport
 BugReports: https://github.com/sebastianvanbaalen/eventreport/issues
-References: van Baalen, Sebastian and Kristine Höglund (2026).
-    "Trials and Triangulations: Analyzing Aggregation Sensitivity in
-    Event Data on Political Violence". International Studies Quarterly
-    70(1): sqag014. doi:10.1093/isq/sqag014.
-    Users of the enclosed MAVERICK dataset should also cite:
-    van Baalen, Sebastian and Kristine Höglund (2026).
-    "Introducing the Modes and Agents of Election-Related Violence in
-    Côte d’Ivoire and Kenya (MAVERICK) dataset". Journal of Peace Research.
-    doi:10.1093/jopres/xjaf012
