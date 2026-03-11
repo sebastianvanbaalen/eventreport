@@ -81,12 +81,12 @@ violence event.
 
 | event_id | city | location | actor1 | actor1_type | deaths_best | source |
 |----|----|----|----|----|----|----|
-| CIV-0004 | Abidjan | Abobo | Unknown security force (C\<U+00F4\>te d’Ivoire) | Security forces | 5 | Amnesty International (All Africa) (2011-01-12) Fresh Violence Erupts as Armed Groups Clash |
-| CIV-0004 | Abidjan | Abobo | Unknown security force (C\<U+00F4\>te d’Ivoire) | Security forces | 1 | LEJD (2011-01-12) Nouveaux affrontements en C\<U+00F4\>te d’Ivoire |
-| CIV-0004 | Abidjan |  | Unknown security force (C\<U+00F4\>te d’Ivoire) | Security forces | 5 | Reuters (2011-01-12) More die in Cote d’Ivoire violence |
-| CIV-0004 | Abidjan | Abobo | Police (C\<U+00F4\>te d’Ivoire) | Security forces | 6 | Xinhua News Agency (2011-01-12) C\<U+00F4\>te d’Ivoire : au total six policiers tu\<U+00E9\>s dans un quartier pro Ouattara \<U+00E0\> Abidjan |
-| CIV-0004 | Abidjan |  | Police (C\<U+00F4\>te d’Ivoire) | Security forces | 6 | Al Jazeera (2011-01-13) Tensions persist in Cote d’Ivoire |
-| CIV-0004 | Abidjan | Abobo | Unknown actor (C\<U+00F4\>te d’Ivoire) |  | 7 | The Times (2011-01-15) Coup fears as death toll rises |
+| CIV-0004 | Abidjan | Abobo | Unknown security force (Côte d’Ivoire) | Security forces | 5 | Amnesty International (All Africa) (2011-01-12) Fresh Violence Erupts as Armed Groups Clash |
+| CIV-0004 | Abidjan | Abobo | Unknown security force (Côte d’Ivoire) | Security forces | 1 | LEJD (2011-01-12) Nouveaux affrontements en Côte d’Ivoire |
+| CIV-0004 | Abidjan |  | Unknown security force (Côte d’Ivoire) | Security forces | 5 | Reuters (2011-01-12) More die in Cote d’Ivoire violence |
+| CIV-0004 | Abidjan | Abobo | Police (Côte d’Ivoire) | Security forces | 6 | Xinhua News Agency (2011-01-12) Côte d’Ivoire : au total six policiers tués dans un quartier pro Ouattara à Abidjan |
+| CIV-0004 | Abidjan |  | Police (Côte d’Ivoire) | Security forces | 6 | Al Jazeera (2011-01-13) Tensions persist in Cote d’Ivoire |
+| CIV-0004 | Abidjan | Abobo | Unknown actor (Côte d’Ivoire) |  | 7 | The Times (2011-01-15) Coup fears as death toll rises |
 
 ## Why the `eventreport` package?
 
@@ -181,15 +181,15 @@ utils::head(10)
 tinytable::tt(output)
 ```
 
-| event_id | city                      | number_of_sources | unit_of_analysis |
-|----------|---------------------------|-------------------|------------------|
-| CIV-0001 | Du\<U+00E9\>kou\<U+00E9\> | 5                 | Event            |
-| CIV-0002 |                           | 2                 | Event            |
-| CIV-0003 | Abidjan                   | 12                | Event            |
-| CIV-0004 | Abidjan                   | 6                 | Event            |
-| CIV-0008 | Man                       | 1                 | Event            |
-| CIV-0009 | Vavoua                    | 2                 | Event            |
-| CIV-0010 | Abidjan                   | 1                 | Event            |
-| CIV-0011 | Yamoussoukro              | 1                 | Event            |
-| CIV-0012 | Gagnoa                    | 4                 | Event            |
-| CIV-0013 | Daloa                     | 4                 | Event            |
+| event_id | city         | number_of_sources | unit_of_analysis |
+|----------|--------------|-------------------|------------------|
+| CIV-0001 | Duékoué      | 5                 | Event            |
+| CIV-0002 |              | 2                 | Event            |
+| CIV-0003 | Abidjan      | 12                | Event            |
+| CIV-0004 | Abidjan      | 6                 | Event            |
+| CIV-0008 | Man          | 1                 | Event            |
+| CIV-0009 | Vavoua       | 2                 | Event            |
+| CIV-0010 | Abidjan      | 1                 | Event            |
+| CIV-0011 | Yamoussoukro | 1                 | Event            |
+| CIV-0012 | Gagnoa       | 4                 | Event            |
+| CIV-0013 | Daloa        | 4                 | Event            |
